@@ -101,7 +101,18 @@ def assign_grade(github, title, grade):
                                'grade': grade})
     db.session.commit()
 
-    print(f"Successfully added grade on an assignment")   
+    print(f"Successfully added grade on an assignment")
+
+def add_project(title, description, grade):
+
+    QUERY = """
+    INSERT INTO projects (title, description, max_grade)
+      VALUES (:title, :description, :max_grade)
+    """
+    db.session.execute(QUERY, {'title': title,
+                               'description': description,
+                               'max_grade': grade})
+    db.session.commit()
 
 
 def handle_input():
